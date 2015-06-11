@@ -1,10 +1,10 @@
 class "InjureMe"
 
 function InjureMe:__init()
-	Events:Subscribe("PlayerChat", self.PlayerChat)
+	Events:Subscribe("PlayerChat", PlayerChat)
 end
 
-function InjureMe:PlayerChat(args, player)
+function PlayerChat(args, player)
 	local words = args.text:split(" ")
 	if #words ~= 2 and #words ~= 1 then
 		return
