@@ -1,7 +1,14 @@
 class "InjureMe"
 
 function InjureMe:__init()
+
+	self.version = "0.0.1"
+	self.author = "tally"
+	
+	print("Version " ..tostring(self.version).. " loaded. Written by " ..tostring(self.author).. ".")
+
 	Events:Subscribe("PlayerChat", PlayerChat)
+
 end
 
 function PlayerChat(args, player)
@@ -12,27 +19,9 @@ function PlayerChat(args, player)
  
 	local value = tonumber(words[2])
  
-	if words[1] == "injureme" and value then
-		if value <= 0 or value > 1 then
-			Chat:Send(args.player, "Use a value above 0 and below 1.", Color(255, 0, 255))
-			return false
-		else
-			local health = 1 - value
-			args.player:SetHealth(health)
-			Chat:Send(args.player, "You hit yourself for " ..tostring(value).. " damage.", Color(255, 0, 0))
-			return false
-		end
-	elseif words[1] == "healme" then
-		args.player:SetHealth(1)
-		Chat:Send(args.player,"Ah, much better!", Color(0, 255, 0))
-		if args.player:InVehicle() then
-			args.player:GetVehicle():SetHealth(1)
-			Chat:Send(args.player, "Vehicle Repaired.", Color(0, 255, 0))
-		return false
-		end
-	elseif words[1] == "killme" then
-		args.player:SetHealth(0)
-		Chat:Send(args.player,"Oops, That was not medicine!", Color(255, 0, 0))
+	if words[1] == "injureme" then
+		args.player:SetHealth(0.1)
+		Chat:Send(args.player,"Stop hitting yourself!", Color(255, 0, 0))
 		return false
 	else
 		return true
