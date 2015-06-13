@@ -7,7 +7,7 @@ function InjureMe:__init()
 	Events:Subscribe("ModuleLoad", self.ModuleLoad)
     Events:Subscribe("ModuleUnload", self.ModuleUnload)
 	
-	print("Version " ..tostring(self.version).. " loaded. Written by " ..tostring(self.author).. "for Wham!.")
+	print("Version " ..tostring(self.version).. " loaded. Written by " ..tostring(self.author).. " for Wham!.")
 end
 
 function InjureMe:ModuleLoad()
